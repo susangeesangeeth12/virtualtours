@@ -2,9 +2,6 @@
 
 	<include url="skin/vtourskin.xml" />
 	
-
-
-
 	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
 	<skin_settings bingmaps="true"
 	               bingmaps_key=""
@@ -25,7 +22,7 @@
 
 	<!-- set optional skin logo url -->
 	<layer name="skin_logo" url=".\LOGO22.png" scale="0.4" opened_onclick="openurl('...',_blank);" />
-    <events onstart="autoplay_audio();" />
+
 <autorotate enabled="true" 
 		speed="2.0" />
  <action name="startup">
