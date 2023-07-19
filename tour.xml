@@ -1,0 +1,494 @@
+<krpano version="1.16" title="Susangee Sangeeth Vidyalaya" onstart="startup();">
+
+	<include url="skin/vtourskin.xml" />
+
+<skin>
+    <!-- Other skin elements here -->
+
+    <!-- Define the custom hotspot style with the arrow icon -->
+    <style name="custom_hotspotstyle" url="./arrow.png" keep="true" />
+</skin>
+	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+	<skin_settings bingmaps="true"
+	               bingmaps_key=""
+	               bingmaps_zoombuttons="false"
+	               gyro="false"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               tooltips_thumbs="true"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url=".\LOGO22.png" scale="0.4" opened_onclick="openurl('...',_blank);" />
+
+<autorotate enabled="true" 
+		speed="2.0" />
+ <action name="startup">
+        if(startscene === null, copy(startscene,scene[0].name));
+        loadscene(get(startscene), null, MERGE);
+        startautorotate(10, 0);  <!-- Set the desired rotation speed (in degrees per second) -->
+		autorotate.start();
+    </action>
+    <!-- Set the view settings before the startup action -->
+    <view stereographic="true"
+          fisheye="1.0"
+          fov="155"
+          fovtype="VFOV"
+          fovmax="150"
+          hlookat="-60"
+          vlookat="77"
+    />
+
+    <!-- Set the startup action to load the initial scene and start autorotate -->
+    <action name="startup">
+        if(startscene === null, copy(startscene,scene[0].name));
+        loadscene(get(startscene), null, MERGE);
+        startautorotate(10, 0);  <!-- Set the desired rotation speed (in degrees per second) -->
+        autorotate.start();
+        delayedcall(2.0, normalview());
+    </action>
+
+    <display flash10="off" details="24" />
+
+    <action name="normalview">
+        tween(view.hlookat,60, 2.5, easeInOutQuad);
+        tween(view.vlookat, 5, 2.5, easeInOutQuad);
+        tween(view.fov, 110,  2.5, easeInOutQuad);
+        tween(view.fisheye, 0.0, 2.5, easeInOutQuad);
+        wait(2.7);
+        set(display.flash10, on);
+        showtext('[b][i]krpano[br]little planet intro example[/i][/b]', infostyle)
+    </action>
+
+
+	<scene name="scene_1" title="Entrance" onstart="" thumburl="panos/1.tiles/thumb.jpg" lat="6.16845556" lng="80.90759722" heading="0.0">
+
+		<view hlookat="45" vlookat="15" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/1.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/1.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/1.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/1.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+		
+
+<hotspot name="spot1" 
+			style="skin_hotspotstyle" 
+			ath="40" 
+			atv="30" 
+			linkedscene="scene_2" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_2" title="Main-Path" onstart="" thumburl="panos/2.tiles/thumb.jpg" lat="6.16845000" lng="80.90766389" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/2.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/2.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/2.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/2.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+<hotspot name="spot7" 
+			style="skin_hotspotstyle" 
+			ath="230" 
+			atv="25" 
+			linkedscene="scene_1" />
+
+<hotspot name="spot2" 
+			style="skin_hotspotstyle" 
+			ath="-12" 
+			atv="30" 
+			linkedscene="scene_PXL_20230715_172808088_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+<hotspot name="spot3" 
+			style="skin_hotspotstyle" 
+			ath="55" 
+			atv="18" 
+			linkedscene="scene_33" />
+
+	</scene>
+
+	<scene name="scene_33" title="Garden" onstart="" thumburl="panos/33.tiles/thumb.jpg" lat="6.16852778" lng="80.90777222" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/33.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/33.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/33.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/33.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/33.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+<hotspot name="spot4" 
+			style="skin_hotspotstyle" 
+			ath="40" 
+			atv="18" 
+			linkedscene="scene_4" />
+
+<hotspot name="spot6" 
+			style="skin_hotspotstyle" 
+			ath="-40" 
+			atv="18" 
+			linkedscene="scene_2" />
+
+	</scene>
+
+	<scene name="scene_4" title="Garden" onstart="" thumburl="panos/4.tiles/thumb.jpg" lat="6.16852778" lng="80.90777222" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/4.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/4.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/4.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/4.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/4.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+<hotspot name="spot5" 
+			style="skin_hotspotstyle" 
+			ath="-110" 
+			atv="20" 
+			linkedscene="scene_33" />
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_172808088_PHOTOSPHERE" title="Path" onstart="" thumburl="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16844167" lng="80.90770556" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_172808088_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<hotspot name="spot23" 
+			style="skin_hotspotstyle" 
+			ath="180" 
+			atv="15" 
+			linkedscene="scene_2" />
+
+<hotspot name="spot9" 
+			style="skin_hotspotstyle" 
+			ath="2" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_173037059_PHOTOSPHERE" />
+
+			<hotspot name="spot11" 
+			style="skin_hotspotstyle" 
+			ath="-15" 
+			atv="5" 
+			linkedscene="scene_PXL_20230715_174855754_PHOTOSPHERE" />
+
+			<hotspot name="spot12" 
+			style="skin_hotspotstyle" 
+			ath="-30" 
+			atv="5" 
+			linkedscene="scene_PXL_20230715_173234758_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_173037059_PHOTOSPHERE" title="1stFloor" onstart="" thumburl="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16856944" lng="80.90758333" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_173037059_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+<hotspot name="spot10" 
+			style="skin_hotspotstyle" 
+			ath="-30" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_172808088_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_173234758_PHOTOSPHERE" title="2nd Floor" onstart="" thumburl="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16856944" lng="80.90758333" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_173234758_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+	<hotspot name="spot14" 
+			style="skin_hotspotstyle" 
+			ath="-40" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_172808088_PHOTOSPHERE" />
+
+				<hotspot name="spot15" 
+			style="skin_hotspotstyle" 
+			ath="110" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_173910588_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_173910588_PHOTOSPHERE" title="3rdFloor Hall" onstart="" thumburl="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16856944" lng="80.90758333" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_173910588_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+				<hotspot name="spot16" 
+			style="skin_hotspotstyle" 
+			ath="147" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_174716137_PHOTOSPHERE" />
+
+				<hotspot name="spot18" 
+			style="skin_hotspotstyle" 
+			ath="43" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_174412958_PHOTOSPHERE" />
+
+				<hotspot name="spot19" 
+			style="skin_hotspotstyle" 
+			ath="-112" 
+			atv="10" 
+
+			linkedscene="scene_PXL_20230715_173234758_PHOTOSPHERE" />
+
+			<hotspot name="spot20" 
+			style="skin_hotspotstyle" 
+			ath="83" 
+			atv="10" 
+			linkedscene="scene_PXL_20230715_174553423_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_174412958_PHOTOSPHERE" title="Garden" onstart="" thumburl="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16869722" lng="80.90741944" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_174412958_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	<hotspot name="spot22" 
+			style="skin_hotspotstyle" 
+			ath="-108" 
+			atv="10" 
+
+			linkedscene="scene_PXL_20230715_173910588_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_174553423_PHOTOSPHERE" title="Garden" onstart="" thumburl="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16869722" lng="80.90741944" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_174553423_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	<hotspot name="spot21" 
+			style="skin_hotspotstyle" 
+			ath="-95" 
+			atv="10" 
+
+			linkedscene="scene_PXL_20230715_173910588_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_174716137_PHOTOSPHERE" title="Garden" onstart="" thumburl="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16869722" lng="80.90741944" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_174716137_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<hotspot name="spot17" 
+			style="skin_hotspotstyle" 
+			ath="252" 
+			atv="20" 
+			linkedscene="scene_PXL_20230715_173910588_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+	<scene name="scene_PXL_20230715_174855754_PHOTOSPHERE" title="Office Room" onstart="" thumburl="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/thumb.jpg" lat="6.16869722" lng="80.90741944" heading="0.0">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" progressive="false">
+			<level tiledimagewidth="2771" tiledimageheight="2771">
+				<cube url="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1386" tiledimageheight="1386">
+				<cube url="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="693" tiledimageheight="693">
+				<cube url="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/l1_%s_%v_%h.jpg" />
+			</level>
+			<mobile>
+				<cube url="panos/PXL_20230715_174855754_PHOTOSPHERE.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<hotspot name="spot13" 
+			style="skin_hotspotstyle" 
+			ath="-140" 
+			atv="20" 
+			linkedscene="scene_PXL_20230715_172808088_PHOTOSPHERE" />
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+
+</krpano>
