@@ -1,13 +1,10 @@
 <krpano version="1.16" title="Susangee Sangeeth Vidyalaya" onstart="startup();">
 
 	<include url="skin/vtourskin.xml" />
+	
 
-<skin>
-    <!-- Other skin elements here -->
 
-    <!-- Define the custom hotspot style with the arrow icon -->
-    <style name="custom_hotspotstyle" url="./arrow.png" keep="true" />
-</skin>
+
 	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
 	<skin_settings bingmaps="true"
 	               bingmaps_key=""
@@ -28,7 +25,7 @@
 
 	<!-- set optional skin logo url -->
 	<layer name="skin_logo" url=".\LOGO22.png" scale="0.4" opened_onclick="openurl('...',_blank);" />
-
+    <events onstart="autoplay_audio();" />
 <autorotate enabled="true" 
 		speed="2.0" />
  <action name="startup">
@@ -36,6 +33,7 @@
         loadscene(get(startscene), null, MERGE);
         startautorotate(10, 0);  <!-- Set the desired rotation speed (in degrees per second) -->
 		autorotate.start();
+		
     </action>
     <!-- Set the view settings before the startup action -->
     <view stereographic="true"
